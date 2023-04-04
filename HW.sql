@@ -14,10 +14,11 @@ INSERT INTO employee(first_name, last_name, gender, age)
 VALUES ('Polina', 'Martin', 'FeMale', 22);
 SELECT *
 FROM employee;
-UPDATE employee SET first_name = 'Alisa' WHERE id = 1;
-UPDATE employee SET last_name = 'Stepanova' WHERE id = 1;
-UPDATE employee SET gender = 'FeMale' WHERE id = 1;
-UPDATE employee SET age = 23 WHERE id = 1;
+UPDATE employee SET first_name = 'Alisa'
+                  , last_name = 'Stepanova'
+                  , gender = 'FeMale'
+                  , age = 23
+                  WHERE id = 1;
 SELECT  *
 FROM employee;
 DELETE FROM employee WHERE id = 3;
