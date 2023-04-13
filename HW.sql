@@ -61,4 +61,28 @@ GROUP BY Имя
 HAVING count(first_name) > 1
 ORDER BY Максимальный_возраст;
 
+CREATE TABLE city(
+                     city_id BIGSERIAL NOT NULL PRIMARY KEY,
+                     city_name VARCHAR(50) NOT NULL
+);
+ALTER TABLE employee
+    ADD city_id INT NOT NULL default 0;
+
+ALTER TABLE employee ADD FOREIGN KEY (city_id) REFERENCES city(city_id);
+
+INSERT INTO city (city_id, city_name) VALUES
+                                          (1, 'Москва'),
+                                          (2, 'Санкт - Петербург'),
+                                          (3, 'Волгоград');
+
+UPDATE employee SET city_id = 1 WHERE id = 1;
+UPDATE employee SET city_id = 2 WHERE id = 2;
+UPDATE employee SET city_id = 3 WHERE id = 13;
+UPDATE employee SET city_id = 2 WHERE id = 14;
+UPDATE employee SET city_id = 1 WHERE id = 15;
+
+SELECT employee.first_name AS Имя, employee.last_name AS Фамилия, city.city_name AS Город
+FROM employee
+         JOIN city ON employee.city_id = city.city_id;
+
 
