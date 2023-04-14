@@ -84,5 +84,27 @@ UPDATE employee SET city_id = 1 WHERE id = 15;
 SELECT employee.first_name AS Имя, employee.last_name AS Фамилия, city.city_name AS Город
 FROM employee
          JOIN city ON employee.city_id = city.city_id;
+INSERT INTO city(city_id, city_name)
+VALUES (4, 'Владивосток');
+SELECT employee.first_name, employee.last_name, city.city_name
+FROM employee
+RIGHT JOIN city
+ON city.city_id = employee.city_id;
+
+SELECT employee.first_name, city.city_name
+FROM employee
+FULL OUTER JOIN city
+ON city.city_id = employee.city_id;
+
+SELECT employee.first_name, city.city_name
+FROM employee
+CROSS JOIN city;
+
+SELECT city.city_name AS Города_в_которых_не_проживают_сотрудники
+FROM city
+LEFT JOIN employee
+ON city.city_id = employee.city_id
+WHERE employee.first_name is NULL;
+
 
 
